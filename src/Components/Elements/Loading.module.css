@@ -1,0 +1,27 @@
+.loaderWrapper {
+    position: absolute;;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+.customLoader {
+    position: relative;
+    top: 150px;
+    --s:25px;
+    width: 100px;
+    height: 100px;
+    background: #004374;
+    border-radius: 50%;
+    animation: s9 2s infinite linear;
+    clip-path: polygon(0 0,calc(50% - var(--s)) 0,50% var(--s),calc(50% + var(--s)) 0,100% 0,100% calc(50% - var(--s)),calc(100% - var(--s)) 50%,100% calc(50% + var(--s)),100% 100%,calc(50% + var(--s)) 100%, 50% calc(100% - var(--s)),calc(50% - var(--s)) 100%,0 100%,0 calc(50% + var(--s)), var(--s) 50%, 0 calc(50% - var(--s)));
+    z-index: 200;
+    opacity: 0.8;
+}
+
+@keyframes s9 {
+    100% {transform: rotate(1turn)}
+}

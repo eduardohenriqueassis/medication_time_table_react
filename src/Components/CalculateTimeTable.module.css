@@ -1,0 +1,127 @@
+.tabWrapper {
+    width: 40rem;
+    margin: 0px auto;
+    animation: animaTop .3s forwards;
+    padding-top: 4rem !important;
+}
+
+@keyframes animaTop {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -30px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+   }
+
+.form {
+    width: 100%;
+    border: 1px solid var(--main-blue);
+    border-radius: .4rem;
+    padding: 2rem 1rem 1rem;
+    box-shadow: 3px 3px 5px #ccc;
+    box-sizing: border-box;
+    background: var(--super-light-blue);
+}
+
+.h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.doctor {
+    width: 100%;
+}
+
+.medicationIndicationWrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.medicationWrapper, .indicationWrapper {
+    width: 48%;
+}
+
+.dosageDateWrapper {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.dosageWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 48%;
+}
+.dosageInputWrapper{
+    width: 30%;
+}
+.amountTypeWrapper{
+    width: 67%;
+}
+
+.indicationWrapper {
+    width: 48%;
+}
+
+.startDaysAmountWrapper {
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dateWrapper {
+    width: 56%;
+}
+
+.daysWrapper {
+    width: 40%;
+}
+
+.timeSpaceHoursWrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 48%;
+}
+
+.startWrapper{
+    width: 48%;
+}
+
+.hoursMinutes {
+    width: 67%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hours, .minutes {
+    width: 48%;
+    transition: 0.3s;
+}
+
+.hoursAlone {
+    transition: 0.3s;
+    width: 100%;
+}
+
+.hoursSpaceWrapper {
+    width: 48%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.spaceWrapper {
+    width: 30%;
+}
+.dropdownSpaceWrapper {
+    width: 30%;
+}
+
+.btnWrapper {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,155 @@
+.cell {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: .8rem;
+    /* border-left: #004374 1px solid; */
+}
+
+.cell::after {
+    content: '|';
+    display: block;
+    font-size: 1.5rem;
+    color: #ccc;
+    position: absolute;
+    right: -6px;
+}
+
+.lastCell::after {
+    content: '';
+}
+
+.tableChild {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: .1rem;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.column0 {
+    width: 10%;
+}
+.column1 {
+    width: 8%;
+}
+.column2 {
+    width: 9.8%;
+}
+.column3 {
+    width: 12%;
+}
+.column4 {
+    width: 5.4%;
+}
+
+.rowsWrapper {
+    transition: .2s;
+}
+.row {
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    color: var(--text-color);
+    font-weight: bold;
+    letter-spacing: .1rem;
+    transition: .2s;
+}
+
+.row:nth-child(odd){
+    background: #eee;
+}
+.row:nth-child(even){
+    border: 1px solid #eee;
+}
+
+.row:last-child {
+    border-radius:  0 0 0.4rem 0.4rem;
+}
+
+.iconsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.id {
+    display: none;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    padding: .4rem;
+    background: transparent;
+    transition: .2s;
+}
+
+.btn:hover, button:focus {
+    border-radius: 0.4rem;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--middle-blue), 0 0 0 4px var(--hover-blue);
+}
+
+.edit, .delete {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    height: 2.7rem;
+    width: 2.7rem;
+}
+
+.loaderWrapper {
+    position: absolute;;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+.customLoader {
+    position: relative;
+    top: 150px;
+    --s:25px;
+    width: 60px;
+    height: 60px;
+    background: #004374;
+    border-radius: 50%;
+    animation: s9 2s infinite linear;
+    clip-path: polygon(0 0,calc(50% - var(--s)) 0,50% var(--s),calc(50% + var(--s)) 0,100% 0,100% calc(50% - var(--s)),calc(100% - var(--s)) 50%,100% calc(50% + var(--s)),100% 100%,calc(50% + var(--s)) 100%, 50% calc(100% - var(--s)),calc(50% - var(--s)) 100%,0 100%,0 calc(50% + var(--s)), var(--s) 50%, 0 calc(50% - var(--s)));
+    z-index: 200;
+    opacity: 0.8;
+}
+
+@keyframes s9 {
+    100% {transform: rotate(1turn)}
+}
+
+span {
+    display: none;
+    position: absolute;
+    right: 0px;
+}
+
+/* @media (max-width: 1260px){
+    .medicationTableWrapper {
+        display: flex;
+    }
+    .rowsWrapper{
+        display: grid;
+    }
+    .row {
+        display: inline-table;
+    }
+    .cell::after {
+        content: '';
+       
+    }
+} */
