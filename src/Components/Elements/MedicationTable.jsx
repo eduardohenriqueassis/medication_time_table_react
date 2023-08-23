@@ -47,25 +47,31 @@ const MedicationTable = () => {
         <div className={styles.row} key={medication.id}>
           <div className={styles.id}>{medication.id}</div>
           <div className={`${styles.cell} ${styles.column3}`}>
-            {medication.medication} <span>|</span>
+            <p className={styles.info}>Medicamento: </p> {medication.medication}
           </div>
           <div className={`${styles.cell} ${styles.column0}`}>
+            <p className={styles.info}>Dosagem: </p>
             {medication.dosage} {medication.dosageType}
           </div>
           <div className={`${styles.cell} ${styles.column0}`}>
+            <p className={styles.info}>Indicação: </p>
             {medication.indication}
           </div>
           <div className={`${styles.cell} ${styles.column1}`}>
+            <p className={styles.info}>Espaço: </p>
             {medication.space}
           </div>
           <div className={`${styles.cell} ${styles.column2}`}>
+            <p className={styles.info}>Início: </p>
             {medication.start}
           </div>
           <div className={`${styles.cell} ${styles.column2}`}>
+            <p className={styles.info}>Fim: </p>
             {medication.end}
           </div>
           {medication.listOfHours.map((hour, index) => (
             <div key={index} className={`${styles.cell} ${styles.column4}`}>
+              <p className={styles.info}>Hora-{index + 1}: </p>
               {hour}
             </div>
           ))}
