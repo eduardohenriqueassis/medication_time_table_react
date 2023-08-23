@@ -37,7 +37,7 @@
 
 .active {
     border-bottom: 4px solid var(--main-blue);
-    background: #ccc;
+    background: #ddd;
     border-radius: .4rem;
     font-weight: bold;
 }

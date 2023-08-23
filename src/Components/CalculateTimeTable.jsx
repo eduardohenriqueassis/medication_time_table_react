@@ -189,7 +189,7 @@ const CalculateTimeTable = () => {
             <div className={styles.amountTypeWrapper}>
               <Dropdown
                 label="Tipo de medida *"
-                optionsList={["", "ml", "gota", "pílula", "ampola"]}
+                optionsList={["", "ml", "gota", "comprimido", "ampola"]}
                 type="number"
                 name="dosage"
                 {...dosageType}
