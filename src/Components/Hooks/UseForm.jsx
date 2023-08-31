@@ -21,13 +21,12 @@ const UseForm = (type, hours) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
   const [disabled, setDisabled] = React.useState(false);
-  const { medicationData } = React.useContext(UserContext);
+  const [step, setStep] = React.useState("0.5");
 
   React.useEffect(() => {
     setDisabled(true);
   }, []);
 
-  if (medicationData) () => {};
   function validateTypes(value, hours) {
     if (hours === "hours") setDisabledState(value, hours);
     if (type === false) return true;
@@ -63,11 +62,17 @@ const UseForm = (type, hours) => {
     if (error) validateTypes(target.value);
     setValue(target.value);
 
+    target.value === "gota" ? setStep("1") : setStep("0.5");
+
     if (elementName && elementName.nodeValue === "Horas *" && inputValue) {
       setDisabled(true);
     } else {
       setDisabled(false);
     }
+  }
+
+  function getStep() {
+    return step;
   }
 
   return {
@@ -79,7 +84,7 @@ const UseForm = (type, hours) => {
     onBlur: () => validateTypes(value, hours),
     disabled,
     fillInputs,
-    setDisabled: () => setDisabledState(value),
+    getStep: () => getStep(value),
   };
 };
 

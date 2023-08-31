@@ -2,7 +2,6 @@
     width: 40rem;
     margin: 0px auto;
     animation: animaTop .3s forwards;
-    padding-top: 4rem !important;
 }
 
 @keyframes animaTop {
@@ -43,6 +42,7 @@
 
 .medicationWrapper, .indicationWrapper {
     width: 48%;
+    transition: .2s;
 }
 
 .dosageDateWrapper {
@@ -55,6 +55,7 @@
     display: flex;
     justify-content: space-between;
     width: 48%;
+    transition: .2s;
 }
 .dosageInputWrapper{
     width: 30%;
@@ -71,6 +72,7 @@
     width: 48%;
     display: flex;
     justify-content: space-between;
+    transition: .2s;
 }
 
 .dateWrapper {
@@ -92,7 +94,7 @@
 }
 
 .hoursMinutes {
-    width: 67%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
 }
@@ -115,7 +117,7 @@
 }
 
 .spaceWrapper {
-    width: 30%;
+    width: 37%;
 }
 .dropdownSpaceWrapper {
     width: 30%;
@@ -124,4 +126,31 @@
 .btnWrapper {
     margin-top: 4rem;
     margin-bottom: 1rem;
+}
+
+@media (max-width:569px){
+    .medicationIndicationWrapper{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .medicationWrapper{
+        margin-bottom: 1rem;
+
+    }
+    .medicationWrapper, .indicationWrapper{
+        width: 100%;
+    }
+    .dosageDateWrapper{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .dosageWrapper{
+        margin-bottom: 1rem;
+    }
+    .dosageWrapper, .startDaysAmountWrapper{
+        width: 100%;
+    }
+    .hoursSpaceWrapper{
+        width: 100%;
+    }
 }

@@ -182,15 +182,15 @@ const CalculateTimeTable = () => {
                 name="dosage"
                 type="number"
                 min="1"
-                step="1"
+                step={dosageType.getStep()}
                 {...dosage}
               />
             </div>
             <div className={styles.amountTypeWrapper}>
               <Dropdown
                 label="Tipo de medida *"
-                optionsList={["", "ml", "gota", "comprimido", "ampola"]}
-                type="number"
+                optionsList={["", "ml", "gota", "comprimido", "dose"]}
+                type="text"
                 name="dosage"
                 {...dosageType}
               />
@@ -208,7 +208,7 @@ const CalculateTimeTable = () => {
             </div>
             <div className={styles.daysWrapper}>
               <Input
-                label="Qtde de dias *"
+                label="Nº de dias *"
                 name="amountOfDays"
                 type="number"
                 min="1"
