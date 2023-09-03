@@ -89,10 +89,25 @@ const GenerateProcessedMedicationObj = ({
     return formattedDosageType;
   }
 
+  function formatDosage(dosage) {
+    if (dosage && dosage.includes(".")) {
+      let number = dosage.split(".")[0];
+      let decimal = "1/2";
+      if (dosage.split(".")[0] === "0") {
+        number = "";
+      } else {
+        number = dosage.split(".")[0];
+      }
+      return number + " " + decimal;
+    } else {
+      return dosage;
+    }
+  }
+
   return {
     medication: medication.value,
     indication: indication.value,
-    dosage: dosage.value,
+    dosage: formatDosage(dosage.value),
     dosageType: formatDoseType(dosageType.value, dosage.value),
     start: formatStartDate(calendar),
     end: calculateEnd(calendar, amountOfDays),

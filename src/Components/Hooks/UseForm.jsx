@@ -9,7 +9,7 @@ const types = {
   },
   number: {
     regex: /^\d+|\d+\,\d$/,
-    message: "Coloque um número.",
+    message: "Coloque um número maior que zero.",
   },
   date: {
     regex: /^(?:(?:19|20)\d\d)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/,

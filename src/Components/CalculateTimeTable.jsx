@@ -19,7 +19,7 @@ const CalculateTimeTable = () => {
   const indication = UseForm();
   const dosage = UseForm("number");
   const dosageType = UseForm();
-  const calendar = UseForm();
+  const calendar = UseForm("date");
   const amountOfDays = UseForm();
   const hoursValues = UseForm();
   const minValues = UseForm();
@@ -50,13 +50,14 @@ const CalculateTimeTable = () => {
       ) {
         formattedDosageType = medicationData.dosageType.slice(0, -1);
       }
+
       let day = medicationData.start.split("/")[0];
       let month = medicationData.start.split("/")[1];
       let year = medicationData.start.split("/")[2];
       let formattedDate = `${year}-${month}-${day}`;
       medication.fillInputs(medicationData.medication);
       indication.fillInputs(medicationData.indication);
-      dosage.fillInputs(medicationData.dosage);
+      dosage.fillInputs(formatDosage(medicationData.dosage));
       dosageType.fillInputs(formattedDosageType);
       calendar.fillInputs(formattedDate);
       amountOfDays.fillInputs(medicationData.amountOfDays);
@@ -66,6 +67,20 @@ const CalculateTimeTable = () => {
       space.fillInputs(medicationData.space.split("/")[0]);
     }
   }, []);
+
+  function formatDosage(value) {
+    if (value.includes("/")) {
+      let number = value.split(" ")[0];
+      if (number === "") {
+        number = "0";
+      } else {
+        number = value.split(" ")[0];
+      }
+      return `${number}.5`;
+    } else {
+      return value;
+    }
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -200,7 +215,7 @@ const CalculateTimeTable = () => {
                 label="Qtde *"
                 name="dosage"
                 type="number"
-                min="1"
+                min="0"
                 step={dosageType.getStep()}
                 {...dosage}
               />
