@@ -5,6 +5,7 @@ const Calendar = ({ label, name, value, onChange, error, onBlur }) => {
   const [today, setToday] = React.useState("");
   React.useEffect(() => {
     const istoday = new Date();
+    istoday.setDate(istoday.getDate() - 10);
     const year = istoday.getFullYear();
     const month = String(istoday.getMonth() + 1).padStart(2, "0");
     const day = String(istoday.getDate()).padStart(2, "0");

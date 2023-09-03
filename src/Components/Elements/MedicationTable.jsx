@@ -91,7 +91,7 @@ const MedicationTable = () => {
                 id={`delete-${medication.id}`}
                 onClick={handleDelete}
               >
-                <img src="/src/Assets/delete.png" alt="edit" />
+                <img src="/src/Assets/delete.png" alt="delete" />
               </button>
             </div>
           </div>

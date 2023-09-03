@@ -9,7 +9,7 @@ const types = {
   },
   number: {
     regex: /^\d+|\d+\,\d$/,
-    message: "Coloque um número válido.",
+    message: "Coloque um número.",
   },
   date: {
     regex: /^(?:(?:19|20)\d\d)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/,
@@ -21,7 +21,6 @@ const UseForm = (type, hours) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
   const [disabled, setDisabled] = React.useState(false);
-  const { medicationData } = React.useContext(UserContext);
   const [step, setStep] = React.useState("0.5");
 
   React.useEffect(() => {
@@ -60,10 +59,15 @@ const UseForm = (type, hours) => {
   function onChange({ target }) {
     const elementName = target.attributes.label;
     const inputValue = target.value === "" || target.value === "Hora atual";
+
     if (error) validateTypes(target.value);
     setValue(target.value);
 
-    target.value === "gota" ? setStep("1") : setStep("0.5");
+    if (target.value === "gota") {
+      setStep("1");
+    } else {
+      setStep("0.5");
+    }
 
     if (elementName && elementName.nodeValue === "Horas *" && inputValue) {
       setDisabled(true);
@@ -74,6 +78,10 @@ const UseForm = (type, hours) => {
 
   function getStep() {
     return step;
+  }
+
+  function setAmount(value) {
+    setValue(Math.ceil(Number(value)).toString());
   }
 
   return {
@@ -87,6 +95,7 @@ const UseForm = (type, hours) => {
     fillInputs,
     setDisabled: () => setDisabledState(value),
     getStep: () => getStep(value),
+    setAmount: () => setAmount(value),
   };
 };
 

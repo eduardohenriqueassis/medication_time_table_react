@@ -34,6 +34,10 @@ const CalculateTimeTable = () => {
     setHoursArrList(arr);
   }, []);
 
+  // React.useEffect(() => {
+  //   setAmount(amount);
+  // }, [amount]);
+
   React.useEffect(() => {
     if (medicationData && !isCreate) {
       let formattedHour = medicationData.listOfHours[0].split(":")[0];
@@ -147,6 +151,21 @@ const CalculateTimeTable = () => {
     }
   }
 
+  function handleOnChange(event) {
+    dosageType.onChange(event);
+    checkAmountField(event);
+  }
+
+  function checkAmountField(event) {
+    if (event.target.value === "gota" && dosage.value.includes(".")) {
+      dosage.setAmount();
+    }
+  }
+
+  function onBlur(event) {
+    dosageType.onBlur(event.target.value);
+  }
+
   return (
     <section className={`${styles.tabWrapper} container`}>
       <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
@@ -191,8 +210,12 @@ const CalculateTimeTable = () => {
                 label="Tipo de medida *"
                 optionsList={["", "ml", "gota", "comprimido", "dose"]}
                 type="text"
-                name="dosage"
-                {...dosageType}
+                name="dosageType"
+                onChange={handleOnChange}
+                onBlur={onBlur}
+                error={dosageType.error}
+                value={dosageType.value}
+                // {...dosageType}
               />
             </div>
           </div>
