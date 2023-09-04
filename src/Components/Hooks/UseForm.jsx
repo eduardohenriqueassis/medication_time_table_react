@@ -9,7 +9,7 @@ const types = {
   },
   number: {
     regex: /^\d+|\d+\,\d$/,
-    message: "Coloque um número maior que zero.",
+    message: "Escolha um valor.",
   },
   date: {
     regex: /^(?:(?:19|20)\d\d)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/,
@@ -25,9 +25,16 @@ const UseForm = (type, hours) => {
 
   React.useEffect(() => {
     setDisabled(true);
+
+    const storedStep = window.localStorage.getItem("step");
+    setStep(storedStep);
   }, []);
 
-  function validateTypes(value, hours) {
+  React.useEffect(() => {
+    window.localStorage.setItem("step", step);
+  }, [step]);
+
+  function validateTypes(value, hours, isDosageZero) {
     if (hours === "hours") setDisabledState(value, hours);
     if (type === false) return true;
     if (value.length === 0) {
@@ -62,10 +69,14 @@ const UseForm = (type, hours) => {
 
     if (error) validateTypes(target.value);
     setValue(target.value);
-
     if (target.value === "gota") {
       setStep("1");
-    } else {
+    } else if (
+      target.value === "ml" ||
+      target.value === "comprimido" ||
+      target.value === "dose" ||
+      target.value === ""
+    ) {
       setStep("0.5");
     }
 

@@ -7,11 +7,6 @@ const Header = () => {
   const navigationRoutes = [
     { name: "home", route: "/", linkName: "Home" },
     { name: "table", route: "/table", linkName: "Tabela de Horários" },
-    // {
-    //   name: "calculate",
-    //   route: "/calculate",
-    //   linkName: "Cadastrar Medicamento",
-    // },
   ];
   return (
     <header className={styles.header}>

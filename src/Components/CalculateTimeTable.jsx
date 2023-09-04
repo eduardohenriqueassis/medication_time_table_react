@@ -8,7 +8,7 @@ import Calendar from "./Elements/Calendar";
 import Loading from "./Elements/Loading";
 import GenerateProcessedMedicationObj from "./Hooks/GenerateProcessedMedicationObj";
 import { UserContext } from "../UserContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CalculateTimeTable = () => {
   const { medicationData, updateMedication, createMedication, loading } =
@@ -25,6 +25,7 @@ const CalculateTimeTable = () => {
   const minValues = UseForm();
   const space = UseForm();
   const [hoursArrList, setHoursArrList] = React.useState([]);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     let arr = ["", "Hora atual"];
@@ -33,10 +34,6 @@ const CalculateTimeTable = () => {
     }
     setHoursArrList(arr);
   }, []);
-
-  // React.useEffect(() => {
-  //   setAmount(amount);
-  // }, [amount]);
 
   React.useEffect(() => {
     if (medicationData && !isCreate) {
@@ -61,7 +58,7 @@ const CalculateTimeTable = () => {
       dosageType.fillInputs(formattedDosageType);
       calendar.fillInputs(formattedDate);
       amountOfDays.fillInputs(medicationData.amountOfDays);
-      hoursValues.setDisabled(medicationData.listOfHours[0]);
+      hoursValues.setDisabled();
       hoursValues.fillInputs(formattedHour);
       minValues.fillInputs(formattedMin);
       space.fillInputs(medicationData.space.split("/")[0]);
@@ -95,7 +92,7 @@ const CalculateTimeTable = () => {
       space.validateTypes() &&
       medication.validateTypes() &&
       indication.validateTypes() &&
-      dosage.validateTypes() &&
+      dosage.validateTypes(true) &&
       dosageType.validateTypes() &&
       calendar.validateTypes() &&
       amountOfDays.validateTypes() &&
@@ -215,7 +212,7 @@ const CalculateTimeTable = () => {
                 label="Qtde *"
                 name="dosage"
                 type="number"
-                min="0"
+                min={dosageType.getStep()}
                 step={dosageType.getStep()}
                 {...dosage}
               />
@@ -307,11 +304,15 @@ const CalculateTimeTable = () => {
           </div>
         ) : (
           <div className={styles.btnWrapper}>
-            <Button>Cadastrar</Button>
+            <Button>Cadastrar Novo</Button>
           </div>
         )}
       </form>
       {loading && <Loading />}
+      <div className={styles.cancelWrapper}>
+        <Button onPress={() => navigate("/table")}>Cancelar</Button>
+        <Button onPress={() => window.location.reload()}>Cadastrar Novo</Button>
+      </div>
     </section>
   );
 };

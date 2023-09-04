@@ -128,6 +128,16 @@
     margin-bottom: 1rem;
 }
 
+.cancelWrapper {
+    margin-top: 1rem;
+    background: #eee;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    border-radius: .4rem;
+}
+
 @media (max-width:569px){
     .medicationIndicationWrapper{
         display: grid;
