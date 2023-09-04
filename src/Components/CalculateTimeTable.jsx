@@ -309,10 +309,31 @@ const CalculateTimeTable = () => {
         )}
       </form>
       {loading && <Loading />}
-      <div className={styles.cancelWrapper}>
-        <Button onPress={() => navigate("/table")}>Cancelar</Button>
-        <Button onPress={() => window.location.reload()}>Cadastrar Novo</Button>
-      </div>
+      {!isCreate ? (
+        <div className={styles.cancelWrapper}>
+          <button
+            className={styles.secondaryBtn}
+            onClick={() => navigate("/table")}
+          >
+            Voltar
+          </button>
+          <button
+            className={styles.secondaryBtn}
+            onClick={() => window.location.reload()}
+          >
+            Cadastrar Novo
+          </button>
+        </div>
+      ) : (
+        <div className={styles.cancelWrapper}>
+          <button
+            className={styles.secondaryBtn}
+            onClick={() => navigate("/table")}
+          >
+            Voltar
+          </button>
+        </div>
+      )}
     </section>
   );
 };
