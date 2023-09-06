@@ -25,7 +25,6 @@ const UseForm = (type, hours) => {
 
   React.useEffect(() => {
     setDisabled(true);
-
     const storedStep = window.localStorage.getItem("step");
     setStep(storedStep);
   }, []);

@@ -21,6 +21,7 @@ const Home = () => {
         </p>
         <div className={styles.btnWrapper}>
           <Button onPress={handleClick}>Cadastrar Medicamento</Button>
+          <Button onPress={() => navigate("/table")}>Sua Tabela</Button>
         </div>
       </main>
     </div>

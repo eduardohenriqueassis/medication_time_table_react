@@ -25,6 +25,8 @@ const CalculateTimeTable = () => {
   const minValues = UseForm();
   const space = UseForm();
   const [hoursArrList, setHoursArrList] = React.useState([]);
+  const [isCreateFlow, setIsCreateFlow] = React.useState();
+  const [isDisabled, setIsDisabled] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -33,6 +35,7 @@ const CalculateTimeTable = () => {
       arr.push(i.toString());
     }
     setHoursArrList(arr);
+    setIsCreateFlow(isCreate);
   }, []);
 
   React.useEffect(() => {
@@ -178,12 +181,27 @@ const CalculateTimeTable = () => {
     dosageType.onBlur(event.target.value);
   }
 
+  function clearForm() {
+    medication.fillInputs("");
+    indication.fillInputs("");
+    dosage.fillInputs("");
+    dosageType.fillInputs("");
+    calendar.fillInputs("");
+    amountOfDays.fillInputs("");
+    hoursValues.setDisabled("");
+    hoursValues.fillInputs("");
+    minValues.fillInputs("");
+    space.fillInputs("");
+    setIsCreateFlow(true);
+    setIsDisabled(true);
+  }
+
   return (
     <section className={`${styles.tabWrapper} container`}>
       <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
       <form
         className={styles.form}
-        onSubmit={isCreate ? handleSubmit : editMedication}
+        onSubmit={isCreateFlow ? handleSubmit : editMedication}
       >
         <div className={styles.medicationIndicationWrapper}>
           <div className={styles.medicationWrapper}>
@@ -262,7 +280,7 @@ const CalculateTimeTable = () => {
               {...space}
             />
           </div>
-          {hoursValues.disabled ? (
+          {hoursValues.disabled || isDisabled ? (
             <div className={styles.hoursMinutes}>
               <div className={styles.hoursAlone}>
                 <Dropdown
@@ -298,39 +316,39 @@ const CalculateTimeTable = () => {
           )}
         </div>
 
-        {medicationData && !isCreate ? (
+        {medicationData && !isCreateFlow ? (
           <div className={styles.btnWrapper}>
             <Button>Atualizar</Button>
           </div>
         ) : (
           <div className={styles.btnWrapper}>
-            <Button>Cadastrar Novo</Button>
+            <Button>Cadastrar</Button>
           </div>
         )}
       </form>
       {loading && <Loading />}
-      {!isCreate ? (
+      {!isCreateFlow ? (
         <div className={styles.cancelWrapper}>
           <button
-            className={styles.secondaryBtn}
+            className={`${styles.secondaryBtn} ${styles.btnVoltar}`}
             onClick={() => navigate("/table")}
           >
-            Voltar
+            Tabela
           </button>
           <button
-            className={styles.secondaryBtn}
-            onClick={() => window.location.reload()}
+            className={`${styles.secondaryBtn} ${styles.btnCadastrarNovo}`}
+            onClick={clearForm}
           >
             Cadastrar Novo
           </button>
         </div>
       ) : (
-        <div className={styles.cancelWrapper}>
+        <div className={styles.cancelWrapperOneChild}>
           <button
-            className={styles.secondaryBtn}
+            className={`${styles.secondaryBtn}`}
             onClick={() => navigate("/table")}
           >
-            Voltar
+            Tabela
           </button>
         </div>
       )}
