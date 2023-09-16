@@ -44,7 +44,7 @@ const MedicationTable = () => {
   function composeRows(arr) {
     setRows(
       arr.map((medication) => (
-        <div className={styles.row} key={medication.id}>
+        <li className={styles.row} key={medication.id}>
           <div className={styles.id}>{medication.id}</div>
           <div className={`${styles.cell} ${styles.column3}`}>
             <p className={styles.info}>Medicamento: </p> {medication.medication}
@@ -95,7 +95,7 @@ const MedicationTable = () => {
               </button>
             </div>
           </div>
-        </div>
+        </li>
       ))
     );
   }
@@ -103,7 +103,7 @@ const MedicationTable = () => {
   return (
     <div className={styles.medicationTableWrapper}>
       <TableHead />
-      <div className={styles.rowsWrapper}>{rows}</div>
+      <ul className={styles.rowsWrapper}>{rows}</ul>
     </div>
   );
 };
