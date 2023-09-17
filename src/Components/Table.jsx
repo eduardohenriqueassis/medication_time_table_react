@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MedicationTable from "./Elements/MedicationTable";
 import Loading from "./Elements/Loading";
 import { UserContext } from "../UserContext";
+import Head from "./Head";
 
 const Table = () => {
   const navigate = useNavigate();
@@ -17,7 +18,8 @@ const Table = () => {
   }
 
   return (
-    <div className={`${styles.wrapper} container`}>
+    <section className={`${styles.wrapper} container`}>
+      <Head title="Sua Tabela" />
       {loading && <Loading />}
       <div className={styles.divTitle}>
         <h1 className={styles.title}>
@@ -31,7 +33,7 @@ const Table = () => {
       <div className={styles.tableWrapper}>
         <MedicationTable />
       </div>
-    </div>
+    </section>
   );
 };
 

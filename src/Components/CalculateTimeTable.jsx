@@ -9,6 +9,7 @@ import Loading from "./Elements/Loading";
 import GenerateProcessedMedicationObj from "./Hooks/GenerateProcessedMedicationObj";
 import { UserContext } from "../UserContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import Head from "./Head";
 
 const CalculateTimeTable = () => {
   const { medicationData, updateMedication, createMedication, loading } =
@@ -198,6 +199,13 @@ const CalculateTimeTable = () => {
 
   return (
     <section className={`${styles.tabWrapper} container`}>
+      <Head
+        title={
+          medicationData && !isCreateFlow
+            ? "Atualizar Medicamento"
+            : "Cadastrar Medicamento"
+        }
+      />
       <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
       <form
         className={styles.form}
