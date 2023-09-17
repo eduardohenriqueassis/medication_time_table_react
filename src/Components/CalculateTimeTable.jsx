@@ -205,6 +205,11 @@ const CalculateTimeTable = () => {
             ? "Atualizar Medicamento"
             : "Cadastrar Medicamento"
         }
+        description={
+          medicationData && !isCreateFlow
+            ? "Atualize os dados do seu medicamento"
+            : "Cadastre um novo medicamento."
+        }
       />
       <h1 className={styles.h1}>Insira os dados do seu medicamento.</h1>
       <form

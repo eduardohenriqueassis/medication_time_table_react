@@ -19,7 +19,10 @@ const Table = () => {
 
   return (
     <section className={`${styles.wrapper} container`}>
-      <Head title="Sua Tabela" />
+      <Head
+        title="Sua Tabela"
+        description="Aqui estão todos os medicamentos que você cadastrou."
+      />
       {loading && <Loading />}
       <div className={styles.divTitle}>
         <h1 className={styles.title}>
